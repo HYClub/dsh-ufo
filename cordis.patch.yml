@@ -1,0 +1,4 @@
+- insert:
+    - id: ufo
+      name: dsh-ufo
+      config: {}

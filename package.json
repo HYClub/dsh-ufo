@@ -1,0 +1,45 @@
+{
+  "name": "dsh-ufo",
+  "version": "0.4.9",
+  "private": true,
+  "type": "module",
+  "description": "你太习惯这个世界了，才会对任何事情都不感到惊奇，慢慢失去了对世界与生俱来的好奇心。\n\n美国空军蓝皮书（1947–1969，12,618 起）、法国 GEIPAN 的三千余宗案卷、英国国防部 DEFE 24、巴西国家档案馆，以及 NUFORC 的十六万条民间目击——一个入口都调得到。按国家、年份、形状或关键词问，同一事件的多方记录自动合并，每条官方解释都标明出处。你查过的会收进自己的档案馆网页，随时能翻。",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "lib/",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.1-rc.2 <0.3.0"
+  },
+  "license": "MIT",
+  "author": "dsh-ufo contributors",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "ufo",
+    "archive"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HYClub/dsh-ufo.git"
+  },
+  "homepage": "https://github.com/HYClub/dsh-ufo#readme",
+  "bugs": {
+    "url": "https://github.com/HYClub/dsh-ufo/issues"
+  }
+}
