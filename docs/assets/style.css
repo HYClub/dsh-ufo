@@ -1,0 +1,470 @@
+/* ==========================================================================
+   dsh-ufo —— ufo.huoyue.club
+   一页。不需要滚动也知道这是什么，滚下去只有名录。
+   ========================================================================== */
+
+:root {
+  --bg: #04060a;
+  --text: #e8eef8;
+  --text-dim: #8e99ad;
+  --text-mute: #5a6377;
+  --accent: #2997ff;
+  --accent-rgb: 41, 151, 255;
+  --line: rgba(255, 255, 255, 0.08);
+
+  --maxw: 1080px;
+  --gutter: 28px;
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC",
+    sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+code {
+  font-family: var(--font-mono);
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* --------------------------------------------------------------- topbar */
+.topbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 20;
+  padding: 22px 0;
+  pointer-events: none;
+}
+
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: rgba(232, 238, 248, 0.72);
+  transition: color 0.25s var(--ease);
+}
+
+.brand:hover {
+  color: var(--text);
+}
+
+.topbar__gh {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: rgba(232, 238, 248, 0.45);
+  transition: color 0.25s var(--ease);
+}
+
+.topbar__gh:hover {
+  color: var(--text);
+}
+
+/* ------------------------------------------------------------ 门（首屏） */
+.gate {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100svh;
+  padding: 130px 0 90px;
+  overflow: hidden;
+}
+
+/* 星场：用平铺的点，不画图也不上 canvas */
+.gate__stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 28px 34px, rgba(255, 255, 255, 0.42), transparent),
+    radial-gradient(1px 1px at 122px 96px, rgba(255, 255, 255, 0.22), transparent),
+    radial-gradient(1.5px 1.5px at 188px 152px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 66px 196px, rgba(255, 255, 255, 0.16), transparent),
+    radial-gradient(1px 1px at 216px 58px, rgba(255, 255, 255, 0.24), transparent);
+  background-size: 260px 260px;
+  opacity: 0.75;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, #000 8%, rgba(0, 0, 0, 0.45) 62%, transparent 96%);
+  mask-image: linear-gradient(180deg, #000 8%, rgba(0, 0, 0, 0.45) 62%, transparent 96%);
+}
+
+/* 地平线：一个极大的圆，只露出最顶上那一小段弧。
+   半径要远大于容器宽度，弧才会是“缓缓压下来”，而不是一顶帽子。 */
+.gate__horizon {
+  position: absolute;
+  left: 50%;
+  top: calc(100% - 64px);
+  width: 460vw;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 1px 0 rgba(var(--accent-rgb), 0.4),
+    inset 0 120px 180px -100px rgba(var(--accent-rgb), 0.2);
+  pointer-events: none;
+}
+
+.gate__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.gate__kicker {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.34em;
+  color: rgba(var(--accent-rgb), 0.85);
+}
+
+.gate h1 {
+  margin: 26px 0 0;
+  font-family: var(--font-mono);
+  font-size: clamp(3.6rem, 13vw, 8.6rem);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+  color: #f4f8ff;
+  text-shadow: 0 0 90px rgba(var(--accent-rgb), 0.28);
+}
+
+.gate__quote {
+  margin-top: clamp(34px, 5vw, 58px);
+  /* 换行由 HTML 里的 <br> 决定；不再设 max-width，
+     否则中文字宽远大于 1ch，最后一行会被挤断成孤字 */
+  font-size: clamp(1.02rem, 2.1vw, 1.4rem);
+  line-height: 2.1;
+  color: #b7c3d6;
+}
+
+/* 入口：两行就够。上面一行是怎么进，下面一行是把什么装上。
+   不加小标题、不加步骤编号、不写重启之类 —— 那是文档的事。 */
+.gate__enter {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: clamp(46px, 7vw, 84px);
+}
+
+.cadence {
+  position: relative;
+  flex: none;
+  width: 64px;
+  height: 1px;
+  margin-top: 0.9em;
+  background: linear-gradient(90deg, transparent, rgba(var(--accent-rgb), 0.75));
+}
+
+.cadence::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: -2.5px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(var(--accent-rgb), 0.95);
+  box-shadow: 0 0 14px 3px rgba(var(--accent-rgb), 0.45);
+  animation: pulse 3.4s var(--ease) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.enter {
+  min-width: 0;
+}
+
+.enter__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 18px;
+}
+
+.enter__row + .enter__row {
+  margin-top: 14px;
+}
+
+.enter__slash {
+  font-size: clamp(0.98rem, 1.8vw, 1.12rem);
+  letter-spacing: 0.04em;
+  color: rgba(232, 238, 248, 0.9);
+}
+
+.enter__cmd {
+  min-width: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+  color: rgba(142, 153, 173, 0.92);
+  word-break: break-all;
+  cursor: pointer;
+  transition: color 0.2s var(--ease);
+}
+
+.enter__cmd:hover {
+  color: rgba(232, 238, 248, 0.8);
+}
+
+/* 点一下复制：不弹提示、不换文案，只是短暂亮一下 */
+.enter__cmd.is-copied {
+  color: rgba(var(--accent-rgb), 0.95);
+}
+
+/* 复制反馈：贴在底部的细条，出现 1.5 秒后自己走。
+   不用对话框、不遮内容、也不拦点击。 */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 46px;
+  z-index: 60;
+  padding: 8px 17px;
+  border: 1px solid rgba(var(--accent-rgb), 0.45);
+  border-radius: 999px;
+  background: rgba(7, 12, 20, 0.94);
+  color: rgba(var(--accent-rgb), 0.96);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
+  pointer-events: none;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 30px -12px rgba(var(--accent-rgb), 0.5);
+}
+
+.toast.is-on {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ------------------------------------------------------------------ 引 */
+.lede {
+  padding: clamp(96px, 15vw, 190px) 0;
+  border-top: 1px solid var(--line);
+}
+
+.lede__big {
+  font-size: clamp(1.9rem, 5.4vw, 3.6rem);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+  color: #eef3fb;
+}
+
+.lede__small {
+  margin-top: clamp(22px, 3.4vw, 38px);
+  /* 断行位置由 <br> 决定；中文字宽不等于 1ch，用 ch 设宽会断在词中间 */
+  font-size: clamp(0.98rem, 2vw, 1.18rem);
+  line-height: 2.05;
+  color: var(--text-dim);
+}
+
+/* ------------------------------------------------------------------ 案 */
+.archives {
+  padding: clamp(80px, 12vw, 150px) 0 clamp(90px, 13vw, 170px);
+  border-top: 1px solid var(--line);
+}
+
+.archives__title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.34em;
+  color: var(--text-mute);
+  margin-bottom: clamp(38px, 6vw, 68px);
+}
+
+.ledger {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: ledger;
+}
+
+.ledger li {
+  display: grid;
+  grid-template-columns: minmax(0, 15ch) minmax(0, 1fr);
+  gap: 10px 28px;
+  align-items: baseline;
+  padding: clamp(14px, 2vw, 21px) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.055);
+  counter-increment: ledger;
+}
+
+.ledger li::before {
+  content: counter(ledger, decimal-leading-zero);
+  display: none;
+}
+
+.ledger__name {
+  font-family: var(--font-mono);
+  font-size: clamp(0.88rem, 1.7vw, 1.02rem);
+  letter-spacing: 0.01em;
+  color: #d9e2f1;
+}
+
+.ledger__note {
+  font-size: clamp(0.84rem, 1.6vw, 0.95rem);
+  color: var(--text-mute);
+  letter-spacing: 0.01em;
+}
+
+.ledger li:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+}
+
+/* 官方与民间之间留一道空行，不写说明 */
+.ledger__sep {
+  border-top: 0;
+  height: clamp(22px, 3.4vw, 40px);
+  padding: 0;
+}
+
+/* ------------------------------------------------------------------ 尾 */
+.closing {
+  padding: clamp(80px, 12vw, 150px) 0 clamp(104px, 15vw, 190px);
+  border-top: 1px solid var(--line);
+}
+
+.closing p {
+  font-size: clamp(1.05rem, 2.4vw, 1.42rem);
+  line-height: 2;
+  color: #8f9bb0;
+  font-style: italic;
+}
+
+/* -------------------------------------------------------------- footer */
+.footer {
+  padding: 0 0 clamp(34px, 5vw, 54px);
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--text-mute);
+}
+
+.footer__dot {
+  opacity: 0.45;
+}
+
+.footer__link {
+  margin-left: auto;
+  color: var(--text-mute);
+  transition: color 0.25s var(--ease);
+}
+
+.footer__link:hover {
+  color: var(--text-dim);
+}
+
+/* ---------------------------------------------------------- responsive */
+@media (max-width: 720px) {
+  :root {
+    --gutter: 22px;
+  }
+
+  .gate {
+    min-height: 92svh;
+    padding: 110px 0 70px;
+  }
+
+  .gate__quote {
+    max-width: none;
+    line-height: 1.95;
+  }
+
+  /* 窄屏上那根线和命令都收一档，否则命令会顶到右边缘 */
+  .cadence {
+    width: 40px;
+  }
+
+  .enter__cmd {
+    font-size: 0.72rem;
+  }
+
+  .ledger li {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .footer__link {
+    margin-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cadence::after {
+    animation: none;
+  }
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dsh-ufo</title>
+    <meta
+      name="description"
+      content="多国 UFO 档案的一个入口。美国空军蓝皮书、法国 GEIPAN、英国 DEFE 24、NARA RG 615、巴西与加拿大的国家档案，以及 NUFORC 的民间目击。"
+    />
+    <meta name="theme-color" content="#04060a" />
+    <link rel="canonical" href="https://ufo.huoyue.club/" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="dsh-ufo" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:title" content="dsh-ufo" />
+    <meta
+      property="og:description"
+      content="你太习惯这个世界了，才会对任何事情都不感到惊奇，慢慢失去了对世界与生俱来的好奇心。"
+    />
+    <meta property="og:url" content="https://ufo.huoyue.club/" />
+    <meta property="og:image" content="https://ufo.huoyue.club/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="wrap topbar__inner">
+        <a class="brand" href="./" aria-label="dsh-ufo">
+          <svg viewBox="0 0 64 64" width="22" height="22" aria-hidden="true">
+            <defs>
+              <linearGradient id="b-saucer" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#e8f4ff" />
+                <stop offset="100%" stop-color="#7fb6ff" />
+              </linearGradient>
+            </defs>
+            <rect width="64" height="64" rx="14" fill="#080e18" />
+            <ellipse cx="32" cy="34" rx="22" ry="7.5" fill="url(#b-saucer)" opacity="0.9" />
+            <path d="M21 28c3-8 19-8 22 0" fill="none" stroke="#d9ecff" stroke-width="3" stroke-linecap="round" opacity="0.8" />
+          </svg>
+          <span>dsh-ufo</span>
+        </a>
+        <a class="topbar__gh" href="https://github.com/HYClub/dsh-ufo" target="_blank" rel="noopener">
+          GitHub
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <!-- ------------------------------------------------------------ 门 -->
+      <section class="gate">
+        <div class="gate__stars" aria-hidden="true"></div>
+        <div class="gate__horizon" aria-hidden="true"></div>
+
+        <div class="wrap gate__inner">
+          <p class="gate__kicker">1947 —</p>
+          <h1>dsh-ufo</h1>
+          <p class="gate__quote">
+            你太习惯这个世界了，<br />
+            才会对任何事情都不感到惊奇，<br />
+            慢慢失去了对世界与生俱来的好奇心。
+          </p>
+        </div>
+
+        <div class="wrap gate__enter">
+          <span class="cadence" aria-hidden="true"></span>
+
+          <div class="enter">
+            <p class="enter__row">
+              <code class="enter__cmd" id="cmd" data-copy title="点击复制">dsh plugin --profile web add https://github.com/HYClub/dsh-ufo</code>
+            </p>
+            <p class="enter__row">
+              <code class="enter__slash">/ufo</code>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------ 引 -->
+      <section class="lede">
+        <div class="wrap">
+          <p class="lede__big">这里没有结论。</p>
+          <p class="lede__small">
+            只有记录——官方的，民间的，<br />以及它们互相矛盾的地方。
+          </p>
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------ 案 -->
+      <section class="archives" aria-labelledby="archives-title">
+        <div class="wrap">
+          <h2 class="archives__title" id="archives-title">档案</h2>
+
+          <ol class="ledger">
+            <li><span class="ledger__name">蓝皮书</span><span class="ledger__note">美国空军 · 1947–1969 · 12,618 起</span></li>
+            <li><span class="ledger__name">NARA RG 615</span><span class="ledger__note">美国国家档案馆</span></li>
+            <li><span class="ledger__name">GEIPAN</span><span class="ledger__note">法国 · 三千余宗</span></li>
+            <li><span class="ledger__name">DEFE 24</span><span class="ledger__note">英国国防部</span></li>
+            <li><span class="ledger__name">A9755</span><span class="ledger__note">澳洲国家档案馆</span></li>
+            <li><span class="ledger__name">AIR</span><span class="ledger__note">新西兰</span></li>
+            <li><span class="ledger__name">国家档案馆</span><span class="ledger__note">巴西</span></li>
+            <li><span class="ledger__name">LAC</span><span class="ledger__note">加拿大</span></li>
+            <li><span class="ledger__name">DGAC</span><span class="ledger__note">智利</span></li>
+            <li class="ledger__sep" aria-hidden="true"></li>
+            <li><span class="ledger__name">NUFORC</span><span class="ledger__note">民间目击</span></li>
+            <li><span class="ledger__name">目击年表</span><span class="ledger__note">维基百科</span></li>
+            <li><span class="ledger__name">事件锚点</span><span class="ledger__note">Wikidata</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ------------------------------------------------------------ 尾 -->
+      <section class="closing">
+        <div class="wrap">
+          <p>还有些资料存放在我们到不了的地方。</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <span>MIT</span>
+        <a class="footer__link" href="https://huoyue.club/" target="_blank" rel="noopener">HYClub</a>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      ;(() => {
+        const cmd = document.querySelector('[data-copy]')
+        const toast = document.getElementById('toast')
+        if (!cmd || !toast) return
+
+        const copy = async (text) => {
+          try {
+            if (navigator.clipboard?.writeText) {
+              await navigator.clipboard.writeText(text)
+              return true
+            }
+          } catch {}
+          try {
+            const area = document.createElement('textarea')
+            area.value = text
+            area.setAttribute('readonly', '')
+            area.style.cssText = 'position:fixed;top:-9999px;opacity:0'
+            document.body.appendChild(area)
+            area.select()
+            const ok = document.execCommand('copy')
+            document.body.removeChild(area)
+            return ok
+          } catch {
+            return false
+          }
+        }
+
+        let timer = 0
+        const flash = (text) => {
+          toast.textContent = text
+          toast.classList.add('is-on')
+          clearTimeout(timer)
+          timer = setTimeout(() => toast.classList.remove('is-on'), 1500)
+        }
+
+        cmd.addEventListener('click', async () => {
+          const ok = await copy(cmd.textContent.trim())
+          cmd.classList.toggle('is-copied', ok)
+          setTimeout(() => cmd.classList.remove('is-copied'), 1200)
+          flash(ok ? '已复制' : '复制失败，请手动选中')
+        })
+      })()
+    </script>
+  </body>
+</html>

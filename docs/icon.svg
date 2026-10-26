@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="UFO archive">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#2997ff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0b1220" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="saucer" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8f4ff"/>
+      <stop offset="100%" stop-color="#7fb6ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#070b14"/>
+  <circle cx="32" cy="30" r="24" fill="url(#glow)"/>
+  <ellipse cx="32" cy="34" rx="24" ry="8" fill="url(#saucer)" opacity="0.9"/>
+  <ellipse cx="32" cy="33" rx="24" ry="8" fill="none" stroke="#0a1626" stroke-width="1.2" opacity="0.5"/>
+  <path d="M20 28c3-9 21-9 24 0" fill="none" stroke="#d9ecff" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+  <circle cx="23" cy="34" r="1.8" fill="#0a1626"/>
+  <circle cx="32" cy="35.4" r="1.8" fill="#0a1626"/>
+  <circle cx="41" cy="34" r="1.8" fill="#0a1626"/>
+  <circle cx="32" cy="14" r="1.4" fill="#bfe1ff" opacity="0.9"/>
+  <circle cx="12" cy="20" r="0.9" fill="#bfe1ff" opacity="0.6"/>
+  <circle cx="52" cy="18" r="1.1" fill="#bfe1ff" opacity="0.7"/>
+</svg>
